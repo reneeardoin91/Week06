@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import Layout, { siteTitle } from '../components/layout';
 import utilStyles from '../styles/utils.module.css';
-import { getSortedPostsData } from '../lib/posts-json.js';
+import { getSortedPostsData } from '../lib/posts-firebase.js';
 import Link from 'next/link';
 import Date from '../components/date';
 
@@ -36,11 +36,14 @@ export default function Home({ allPostsData }) {
   ); // Return the JSX for the homepage.
 }
 
-export async function getStaticProps() { // Pre-render the homepage data at build time.
-  const allPostsData = getSortedPostsData(); // Fetch the sorted list of posts from JSON.
+export async function getStaticProps() { 
+  // Pre-render the homepage data at build time.
+  const allPostsData = await getSortedPostsData(); 
+  // Fetch the sorted list of posts from JSON.
   return {
     props: {
-      allPostsData, // Pass the post data into the page component.
+      allPostsData, 
+      // Pass the post data into the page component.
     },
   }; // Return the props object for static rendering.
 }

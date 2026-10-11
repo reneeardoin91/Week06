@@ -1,0 +1,14 @@
+{
+  "dependencies": {
+    "firebase": "^13.0.0"
+  },
+  "allowScripts": {
+    "@firebase/util@1.15.3": true,
+    "protobufjs@7.6.6": true
+  },
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "node index.js"
+  }
+}
